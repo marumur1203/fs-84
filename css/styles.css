@@ -23,9 +23,14 @@ ul {
   margin: 0 auto;
   padding-left: 15px;
   padding-right: 15px;
+  /* outline: 3px solid red; */
 }
 body {
   font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 1.36;
+  letter-spacing: 0.02em;
 }
 img {
   display: block;
@@ -58,10 +63,17 @@ img {
   letter-spacing: 0.05em;
 }
 .subtitle {
-  font-weight: 600;
-  font-size: 11px;
-  line-height: 1.36;
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
+}
+.subtitle::before {
+  content: "";
+  width: 60px;
+  height: 1px;
+  background-color: currentColor;
+  display: block;
+  margin-right: 20px;
 }
 .visually-hidden {
   position: absolute;
@@ -130,16 +142,19 @@ img {
   width: 100px;
 }
 .hero-content {
-  background-color: #555555;
+  background-image: linear-gradient(
+      rgba(25, 28, 38, 0.2),
+      rgba(25, 28, 38, 0.2)
+    ),
+    url(../image/bgimg.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
   padding: 272px 100px 208px;
+  flex-grow: 1;
 }
 .hero-item {
 }
 .hero-link {
-  font-weight: 600;
-  font-size: 11px;
-  line-height: 1.36;
-  letter-spacing: 0.2em;
   color: #303030;
 }
 .hero-link:hover,
@@ -147,6 +162,7 @@ img {
   color: var(--accent-color);
 }
 .hero-subtitle {
+  text-transform: uppercase;
   color: rgba(157, 164, 189, 0.6);
   margin-bottom: var(--basic-margin);
 }
@@ -161,7 +177,6 @@ img {
 .hero-desc {
   font-size: 18px;
   line-height: 1.67;
-  letter-spacing: 0.02em;
   color: #9da4bd;
   width: 360px;
 }
@@ -187,6 +202,7 @@ img {
   max-width: 470px;
 }
 .about-subtitle {
+  text-transform: uppercase;
   color: var(--secondary-title-color);
   margin-bottom: var(--basic-margin);
 }
@@ -196,16 +212,17 @@ img {
 }
 .about-description {
   font-weight: 400;
-  font-size: 14px;
-  line-height: 1.86;
-  letter-spacing: 0.02em;
+  font-size: 18px;
+  line-height: 1.67;
   color: #555555;
   margin-bottom: 42px;
 }
-.about-description span {
+.about-text {
+  color: #555555;
   display: block;
-  font-size: 18px;
-  line-height: 1.67;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.86;
   margin-bottom: var(--basic-margin);
 }
 
@@ -215,9 +232,14 @@ img {
 /* ------------------------section services---------------------- */
 .prices {
   padding: 120px 0;
-  background-color: gray;
+  background-image: url(../image/prices-bg.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: #111319;
 }
 .prices-subtitle {
+  text-transform: uppercase;
   color: rgba(157, 164, 189, 0.6);
   margin-bottom: var(--basic-margin);
 }
@@ -234,10 +256,20 @@ img {
   border: 1px solid green;
   padding: 30px 20px;
   flex-grow: 1;
+  width: calc((100% -30px) / 2);
+}
+.prices-item::before {
+  content: "";
+  height: 1px;
+  display: inline-block;
+  background-color: #fff;
+  flex-grow: 1;
 }
 .prices-item {
   display: flex;
   justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
 }
 .prices-item:not(:last-child) {
   margin-bottom: var(--basic-margin);
@@ -248,17 +280,37 @@ img {
   letter-spacing: 0.02em;
   color: #9da4bd;
 }
+.prices-item-text:first-child {
+  order: -1;
+}
 .prices-button {
   color: #ffffff;
   display: block;
   margin: 0 auto;
 }
-/* ---------------------Festures---------------------- */
+/* ---------------------Benefits---------------------- */
 .benefits {
+  padding: 120px;
+}
+.benefits-container {
+  display: flex;
 }
 .benefits-list {
+  width: 45%;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 30px;
+  padding-left: 70px;
+  padding-right: 70px;
 }
 .benefits-item {
+  width: 170px;
+  height: 132px;
+  padding: 20px 24px;
+  background-color: #f7f7f7;
+}
+.benefits-item:nth-child(even) {
+  margin-top: 30px;
 }
 .benefits-item > span {
   font-weight: 700;
@@ -267,31 +319,45 @@ img {
   text-align: center;
   letter-spacing: 0.05em;
   color: #303030;
+  display: flex;
+  align-items: flex-start;
 }
-
-.benefits-item-text {
+.benefits-item > span::after {
+  content: "+";
   font-weight: 600;
-  font-size: 11px;
-  line-height: 1.33;
+  font-size: 16px;
+  line-height: 1.37;
+  color: var(--accent-color);
+}
+.benefits-item-text {
   text-align: center;
   color: #303030;
 }
+.benefits-content {
+  width: 55%;
+  max-width: 500px;
+}
 .benefits-subtitle {
+  text-transform: uppercase;
   color: var(--secondary-title-color);
+  margin-bottom: var(--basic-margin);
 }
 .benefits-title {
   color: var(--secondary-title-color);
+  margin-bottom: var(--basic-margin);
 }
 .benefits-desc {
   font-size: 18px;
   line-height: 1.67;
-  letter-spacing: 0.02em;
   color: #555555;
 }
 /* --------------------Barbers ----------------*/
 .barbers {
+  padding: 120px 0;
+  background-color: #f7f7f7;
 }
 .barbers-subtitle {
+  text-transform: uppercase;
   color: var(--secondary-title-color);
   margin-bottom: var(--basic-margin);
 }
@@ -310,24 +376,50 @@ img {
   padding: 30px;
 }
 .barbers-item-title {
+  font-weight: 400;
   font-size: 18px;
   line-height: 1.38;
   text-align: center;
-  letter-spacing: 0.02em;
   color: var(--secondary-title-color);
   margin-bottom: 8px;
 }
 .babrers-item-text {
+  font-weight: 400;
   font-size: 14px;
   line-height: 1.36;
   text-align: center;
-  letter-spacing: 0.02em;
   color: var(--accent-color);
+  margin-bottom: 30px;
 }
+.barbers-social-list {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.barber-social-item {
+  width: 44px;
+  height: 44px;
+}
+.barbers-social-link {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #ffffff;
+  padding: 12px;
+}
+.barbers-social-link:is(:hover, :focus) .barbers-social-icon {
+  fill: var(--accent-color);
+}
+
+/* ------------Section Gallery--------- */
 .gallery {
   padding: 120px 0;
 }
 .gallery-subtitle {
+  text-transform: uppercase;
   color: var(--secondary-title-color);
   margin-bottom: 44px;
 }
@@ -341,9 +433,26 @@ img {
 }
 /* ------------------------Contacts---------------------------------- */
 .contact {
+  background-color: #191c26;
+  padding: 130px 0 120px;
+  background-image: url(../image/bg-contacts.png);
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 50% 100%;
+}
+.contact-container {
+  display: flex;
+}
+.contacts-form {
+  width: 50%;
+}
+.contacts-wrap {
+  width: 50%;
+  padding-left: 100px;
 }
 .contact-title {
   color: var(--main-title-color);
+  margin-bottom: 40px;
 }
 .contact-address {
   font-style: normal;
@@ -354,8 +463,10 @@ img {
   color: #9da4bd;
 }
 .contact-list {
+  margin-bottom: 70px;
 }
 .contact-item {
+  margin-bottom: var(--basic-margin);
 }
 .contact-link {
   font-weight: 400;
@@ -364,14 +475,55 @@ img {
   letter-spacing: 0.02em;
   color: #9da4bd;
 }
+.adress {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.67;
+}
+.mail {
+  text-decoration-line: underline;
+}
 .contact-subtitle {
+  font-weight: 600;
+  text-transform: uppercase;
   color: #ffffff;
+  margin-bottom: var(--basic-margin);
 }
 .contact-hours {
-  font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.67;
-  letter-spacing: 0.02em;
   color: #9da4bd;
+}
+/* --------------Footer------------- */
+.footer {
+  padding: 56px 0 56px;
+  background-color: #f7f7f7;
+}
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-text {
+  color: #9da4bd;
+}
+.social-list {
+  display: flex;
+  gap: 40px;
+}
+.social-list::before {
+  content: "";
+  width: 60px;
+  height: 1px;
+  background-color: currentColor;
+  display: block;
+  justify-content: baseline;
+}
+
+.footer-social-link {
+  color: #303030;
+}
+.footer-social-link:is(:hover, :focus) {
+  color: var(--accent-color);
 }
